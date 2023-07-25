@@ -1,0 +1,22 @@
+{
+  "name": "csv-to-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "csvToJson.ts",
+  "scripts": {
+    "build": "tsc --outDir dist src/csvToJson.ts",
+    "start": "node dist/csvToJson.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "@types/papaparse": "^5.3.7"
+  }
+}
