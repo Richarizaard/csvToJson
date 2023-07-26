@@ -13,11 +13,14 @@ export function calculateAge(birthday: string, deathday: string): number {
   const deathDate = new Date(deathday)
   const today = new Date()
 
+  // Determines whether to use deathdate or today's date
   const finalDate =
     deathDate instanceof Date && !isNaN(deathDate.getTime()) ? deathDate : today
   const month = finalDate.getMonth() - birthDate.getMonth()
 
   let age = finalDate.getFullYear() - birthDate.getFullYear()
+
+  // Check if user aged or not this year
   if (month < 0 || (month === 0 && finalDate.getDate() < birthDate.getDate())) {
     age -= 1
   }

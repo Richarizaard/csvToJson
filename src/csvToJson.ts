@@ -28,7 +28,6 @@ export function csvToJson(csv: string): Person[] {
     // Only iterate through relationship columns
     for (const column in RELATION_MAP) {
       const entry = row[column]
-
       // If entry is valid, save relationship entry
       if (entry !== 'null' && entry !== null) {
         const relativeName = entry.split(' ')
@@ -40,7 +39,7 @@ export function csvToJson(csv: string): Person[] {
           lastName: relativeName[relativeName.length - 1],
 
           // Look up respective relationship
-          relationship: RELATION_MAP[column],
+          relationship: column,
         })
       }
     }
@@ -65,7 +64,7 @@ export function csvToJson(csv: string): Person[] {
 export default function main(): void {
   // Get command-line arguments
   const args = process.argv
-    console.log(args)
+
   // Console error if no files specified
   if (args.length < 4) {
     console.error('Invalid input: npm run start <inputFile> <outputFile>')

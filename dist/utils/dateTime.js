@@ -14,9 +14,11 @@ function calculateAge(birthday, deathday) {
     var birthDate = new Date(birthday);
     var deathDate = new Date(deathday);
     var today = new Date();
+    // Determines whether to use deathdate or today's date
     var finalDate = deathDate instanceof Date && !isNaN(deathDate.getTime()) ? deathDate : today;
     var month = finalDate.getMonth() - birthDate.getMonth();
     var age = finalDate.getFullYear() - birthDate.getFullYear();
+    // Check if user aged or not this year
     if (month < 0 || (month === 0 && finalDate.getDate() < birthDate.getDate())) {
         age -= 1;
     }

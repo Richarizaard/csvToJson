@@ -6,7 +6,7 @@ describe('R0, Verify function can read input.csv and write output.csv', () => {
   it('shall read from input.csv and output to output.json', () => {
     // Mock called functions
     jest.spyOn(fs, 'existsSync').mockReturnValue(true)
-    jest.spyOn(fs, 'readFileSync').mockReturnValue('true')
+    jest.spyOn(fs, 'readFileSync').mockReturnValue('')
     jest.spyOn(fs, 'writeFileSync').mockReturnValue()
 
     // Specify args

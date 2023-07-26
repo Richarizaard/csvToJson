@@ -33,7 +33,7 @@ function csvToJson(csv) {
                     // lastName will always be last
                     lastName: relativeName[relativeName.length - 1],
                     // Look up respective relationship
-                    relationship: RELATION_MAP[column],
+                    relationship: column,
                 });
             }
         }
@@ -56,7 +56,6 @@ exports.csvToJson = csvToJson;
 function main() {
     // Get command-line arguments
     var args = process.argv;
-    console.log(args);
     // Console error if no files specified
     if (args.length < 4) {
         console.error('Invalid input: npm run start <inputFile> <outputFile>');
