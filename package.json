@@ -2,10 +2,10 @@
   "name": "csv-to-json",
   "version": "1.0.0",
   "description": "",
-  "main": "csvToJson.ts",
+  "main": "main.ts",
   "scripts": {
-    "build": "tsc --outDir dist src/csvToJson.ts",
-    "start": "node dist/csvToJson.js",
+    "build": "tsc --outDir dist src/main.ts",
+    "start": "node dist/main.js",
     "test": "jest --verbose"
   },
   "keywords": [],

@@ -13,7 +13,7 @@ const RELATION_MAP: Record<string, string> = {
   Sister: 'Sister',
 }
 
-function csvToJson(csv: string): Person[] {
+export function csvToJson(csv: string): Person[] {
   // Create final list of extracted people and their metadata
   const people: Person[] = []
 
@@ -62,12 +62,31 @@ function csvToJson(csv: string): Person[] {
   return people
 }
 
-const csv = fs.readFileSync('./data/input.csv', 'utf8')
+export default function main(): void {
+  // Get command-line arguments
+  const args = process.argv
+    console.log(args)
+  // Console error if no files specified
+  if (args.length < 4) {
+    console.error('Invalid input: npm run start <inputFile> <outputFile>')
+    process.exit(1)
+  }
 
-const json = csvToJson(csv)
+  // Get file paths from argv
+  const inputFilePath = args[args.length - 2]
+  const outputFilePath = args[args.length - 1]
 
-// Write the JSON data to a file
-fs.writeFileSync('./data/output1.json', JSON.stringify(json, null, 2))
+  // Console error if inputFilePath does not exist
+  if (!fs.existsSync(inputFilePath)) {
+    console.error(`Input file path cannot be found`)
+    process.exit(1)
+  }
 
-// console.log(JSON.stringify(json, null, 2))
-// console.log(json)
+  const csv = fs.readFileSync(inputFilePath, 'utf8')
+
+  // Convert .csv to .json
+  const json = csvToJson(csv)
+
+  // Write the JSON data to a file
+  fs.writeFileSync(outputFilePath, JSON.stringify(json, null, 2))
+}

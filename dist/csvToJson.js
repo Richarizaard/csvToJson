@@ -1,26 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.csvToJson = void 0;
 var fs = require("fs");
 var Papa = require("papaparse");
 var dateTime_1 = require("./utils/dateTime");
-// interface Relative {
-//   firstName: string
-//   lastName: string
-//   relationship: string
-// }
-// interface Person {
-//   firstName: string
-//   lastName: string
-//   birthday: string
-//   age: number
-//   relatives: Relative[]
-// }
-// interface CsvData {
-//   Name: string
-//   Birthday: string
-//   Died: string
-//   [key: string]: string
-// }
 // Relationship map to dynamically extract/set relative relations
 var RELATION_MAP = {
     Father: 'Father',
@@ -69,9 +52,28 @@ function csvToJson(csv) {
     }
     return people;
 }
-var csv = fs.readFileSync('./data/input.csv', 'utf8');
-var json = csvToJson(csv);
-// Write the JSON data to a file
-fs.writeFileSync('./data/output1.json', JSON.stringify(json, null, 2));
-// console.log(JSON.stringify(json, null, 2))
-// console.log(json)
+exports.csvToJson = csvToJson;
+function main() {
+    // Get command-line arguments
+    var args = process.argv;
+    console.log(args);
+    // Console error if no files specified
+    if (args.length < 4) {
+        console.error('Invalid input: npm run start <inputFile> <outputFile>');
+        process.exit(1);
+    }
+    // Get file paths from argv
+    var inputFilePath = args[args.length - 2];
+    var outputFilePath = args[args.length - 1];
+    // Console error if inputFilePath does not exist
+    if (!fs.existsSync(inputFilePath)) {
+        console.error("Input file path cannot be found");
+        process.exit(1);
+    }
+    var csv = fs.readFileSync(inputFilePath, 'utf8');
+    // Convert .csv to .json
+    var json = csvToJson(csv);
+    // Write the JSON data to a file
+    fs.writeFileSync(outputFilePath, JSON.stringify(json, null, 2));
+}
+exports.default = main;

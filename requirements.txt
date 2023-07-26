@@ -11,11 +11,12 @@ I0 Input .csv format
     - Mother
     - Brother
     - Sister
-
-R0 If value is valid, respective .json mapping value shall be valid for the following:
+R0 This software shall read input in .csv format and output in .json format
+R1 If the specified input .csv file is not found, throw an error and exit
+R2 If value is valid, respective .json mapping value shall be valid for the following:
     - Name
     - Birthday
-R1 Otherwise, null value shall not be mapped to any respective .json value.
+R3 Otherwise, null value shall not be mapped to any respective .json value.
 
 I1 Output .json format:
     - "firstName": string
@@ -24,12 +25,12 @@ I1 Output .json format:
     - "age": number
     - "relatives": { "firstName": string, "lastName": string, "relationship": string }[]
 
-R2 Name shall be split up to "firstName" and "lastName"
-R3 Birthday shall be re-formatted from "M/DD/YYYY" to "YYYY-MM-DD"
-R4 Age shall be calculated according to the following logic - 
+R4 Name shall be split up to "firstName" and "lastName"
+R5 Birthday shall be re-formatted from "M/DD/YYYY" to "YYYY-MM-DD"
+R6 Age shall be calculated according to the following logic - 
     - If Person is alive, e.g. Person.Died === 'null', use Today.Date()
     - Otherwise, use Person.Died
-R5 The following fields shall be mapped to "relatives" array according to I1
+R7 The following fields shall be mapped to "relatives" array according to I1
     - Father
     - Mother
     - Brother

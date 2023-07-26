@@ -1,6 +1,6 @@
 import { formatDate, calculateAge } from '../../src/utils/dateTime'
 
-describe('R3, Verify function formatDate re-formats date correctly', () => {
+describe('R5, Verify function formatDate re-formats date correctly', () => {
   it('shall convert "MM/DD/YYYY" to "YYYY-MM-DD', () => {
     const inputDate = '10/12/1940'
     const expectedOutput = '1940-10-12'
@@ -31,8 +31,8 @@ describe('R3, Verify function formatDate re-formats date correctly', () => {
   })
 })
 
-describe('R4, Verify function calculateAge correctly calculates age based off birthday and deathdate. ', () => {
-  it('shall calculate age correctly when deathdate is before birthday month and day', () => {
+describe('R6, Verify function calculateAge correctly calculates age based off birthday and deathdate. ', () => {
+  it('shall calculate age when deathdate is before birthday month and day', () => {
     const birthday = '10/01/1900'
     const deathday = '09/01/1950'
     const expectedAge = 49
@@ -40,7 +40,7 @@ describe('R4, Verify function calculateAge correctly calculates age based off bi
     const result = calculateAge(birthday, deathday)
     expect(result).toEqual(expectedAge)
   })
-  it('shall calculate age correctly when deathdate is after birthday month and day', () => {
+  it('shall calculate age when deathdate is after birthday month and day', () => {
     const birthday = '10/01/1900'
     const deathday = '12/01/1950'
     const expectedAge = 50
@@ -49,7 +49,7 @@ describe('R4, Verify function calculateAge correctly calculates age based off bi
     expect(result).toEqual(expectedAge)
   })
 
-  it('shall calculate age correctly when todays date is before birthday month and day, and deathdate === "null"', () => {
+  it('shall calculate age when todays date is before birthday month and day, and deathdate === "null"', () => {
     // Mock system time to prevent need to maintain test as days go on
     jest.useFakeTimers()
     jest.setSystemTime(new Date(2023, 7, 25))
@@ -61,7 +61,7 @@ describe('R4, Verify function calculateAge correctly calculates age based off bi
     const result = calculateAge(birthday, deathday)
     expect(result).toEqual(expectedAge)
   })
-  it('shall calculate age correctly when todays date is after birthday month and day, and deathdate === "null"', () => {
+  it('shall calculate age when todays date is after birthday month and day, and deathdate === "null"', () => {
     // Mock system time to prevent need to maintain test as days go on
     jest.useFakeTimers()
     // Travel to the future
