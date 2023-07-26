@@ -11,8 +11,10 @@ I0 Input .csv format
     - Mother
     - Brother
     - Sister
-R0 This software shall read input in .csv format and output in .json format
-R1 If the specified input .csv file is not found, throw an error and exit
+R0 The software shall read input in .csv format and output in .json format
+R1 The software shall throw an error and exit upon either of the following conditions:
+    - User fails to specify input file
+    - Specified input file does not exist
 R2 If value is valid, respective .json mapping value shall be valid for the following:
     - Name
     - Birthday
