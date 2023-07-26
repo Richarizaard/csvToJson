@@ -2,6 +2,7 @@ Hi there!
 
 This is my take at the .CSV to JSON converter.
 
+Requirements are in `requirements.txt`
 ______________________________________________________________________________________________________
 Unit testing suite uses Jest.
 
