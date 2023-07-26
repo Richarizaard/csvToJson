@@ -60,6 +60,9 @@ describe('R6, Verify function calculateAge correctly calculates age based off bi
 
     const result = calculateAge(birthday, deathday)
     expect(result).toEqual(expectedAge)
+
+    // Reset system time after each test is complete
+    jest.useRealTimers()
   })
   it('shall calculate age when todays date is after birthday month and day, and deathdate === "null"', () => {
     // Mock system time to prevent need to maintain test as days go on
@@ -73,5 +76,8 @@ describe('R6, Verify function calculateAge correctly calculates age based off bi
 
     const result = calculateAge(birthday, deathday)
     expect(result).toEqual(expectedAge)
+
+    // Reset system time after each test is complete
+    jest.useRealTimers()
   })
 })

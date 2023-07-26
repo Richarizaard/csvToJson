@@ -7,7 +7,7 @@ Unit testing suite uses Jest.
 
 Tests are located in the `test` directory.
 
-To run the testing suite, run `npm run test`
+To run the testing suite, run `npm test`
 ______________________________________________________________________________________________________
 **How to run this script**
 - Clone repo
